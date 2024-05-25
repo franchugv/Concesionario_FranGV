@@ -47,25 +47,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIBD.cs" />
-    <Compile Include="Concesionario.cs">
+    <Compile Include="Formularios\Concesionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Concesionario.Designer.cs">
+    <Compile Include="Formularios\Concesionario.Designer.cs">
       <DependentUpon>Concesionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInsertar.cs">
+    <Compile Include="Conversiones.cs" />
+    <Compile Include="Formularios\FormActualizar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInsertar.Designer.cs">
+    <Compile Include="Formularios\FormActualizar.Designer.cs">
+      <DependentUpon>FormActualizar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormConsultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormConsultar.Designer.cs">
+      <DependentUpon>FormConsultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FormInsertar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormInsertar.Designer.cs">
       <DependentUpon>FormInsertar.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI.cs" />
     <Compile Include="Vehiculo.cs" />
-    <EmbeddedResource Include="Concesionario.resx">
+    <EmbeddedResource Include="Formularios\Concesionario.resx">
       <DependentUpon>Concesionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormInsertar.resx">
+    <EmbeddedResource Include="Formularios\FormActualizar.resx">
+      <DependentUpon>FormActualizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormConsultar.resx">
+      <DependentUpon>FormConsultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormInsertar.resx">
       <DependentUpon>FormInsertar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

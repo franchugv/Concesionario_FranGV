@@ -33,7 +33,8 @@ namespace Concesionario_FranGV
         private float _precio;
 
         // CONSTRUCTORES
-        
+
+
         // Claves primarias
         public Vehiculo(string brand, string model, int year)
         {
@@ -52,7 +53,10 @@ namespace Concesionario_FranGV
 
         public string Marca
         {
-            get { return _marca; }
+            get 
+            { 
+                return _marca; 
+            }
             set
             {
                 // El value se pasará a mayusculas
@@ -63,19 +67,29 @@ namespace Concesionario_FranGV
 
         public string Modelo
         {
-            get { return _modelo; }
+            get 
+            { 
+                return _modelo; 
+            }
             // El value se pasará a mayusculas
-            set { _modelo = ValidarModelo(value); }
+            set 
+            { 
+                _modelo = ValidarModelo(value); 
+            }
         }
 
         public int Anio
         {
-            get { return _anio; }
+            get 
+            { 
+                return _anio; 
+            }
             set 
             { 
                 // Validar año
                 ValidarAnio(value);
-                _anio = value; }
+                _anio = value; 
+            }
         }
 
         // Al ser float podrá contener decimles
@@ -101,7 +115,6 @@ namespace Concesionario_FranGV
         {
             if (string.IsNullOrEmpty(cadena)) throw new CadenaVaciaException();
         }
-
         /// <summary>
         /// Validar marca
         /// </summary>
@@ -134,13 +147,13 @@ namespace Concesionario_FranGV
         /// <exception cref="Exception"></exception>
         private static string ValidarModelo(string model)
         {
-            // Pasar a mayusculas
+            // Pasar a mayusculas, siempre al principio
             model = model.Trim().ToUpper();
 
             // Min
-            if (model.Length < LongitudMinimaModelo) throw new Exception("Es inferior al rango de valores establecido");
+            if (model.Length < LongitudMinimaModelo) throw new Exception("El rango del modelo inferior al rango de valores establecido");
             // Max
-            if (model.Length > LongitudMaxinaModelo) throw new Exception("Es mayor al rango de valores establecido");
+            if (model.Length > LongitudMaxinaModelo) throw new Exception("El rango del modelo es mayor al valores establecido");
 
             // Parsar a mayusculas
         return model;            
@@ -155,7 +168,7 @@ namespace Concesionario_FranGV
 
         private static void ValidarPrecio(float precio)
         {
-            if (precio < PrecioMinimo) throw new Exception("El precio es inferor al mínimo");
+            if (precio < PrecioMinimo) throw new Exception("El precio es inferior al mínimo");
             if (precio > PrecioMaximo) throw new Exception("El precio es mayor al máximo");
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Concesionario_FranGV.Formularios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,11 +34,12 @@ namespace Concesionario_FranGV
                     InsertarForm();
                     break;
                 case "buttonActualizar":
-
+                    ActualizarForm();
                     break;
                 case "buttonEliminar": 
                     break;
                 case "buttonConsultar":
+                    ConsultarForm();
                     break;
             }
         }
@@ -49,6 +51,22 @@ namespace Concesionario_FranGV
             Formulario = new FormInsertar();
 
             Formulario.ShowDialog();
+        }
+
+        private void ConsultarForm()
+        {
+            FormConsultar FormularioC = null;
+
+            FormularioC = new FormConsultar();
+
+            FormularioC.ShowDialog();
+        }
+
+        private void ActualizarForm()
+        {
+            FormActualizar FormAct = new FormActualizar();
+
+            FormAct.ShowDialog();
         }
     }
 }

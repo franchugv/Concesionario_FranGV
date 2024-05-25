@@ -63,6 +63,7 @@
             this.buttonActualizar.TabIndex = 4;
             this.buttonActualizar.Text = "Actualizar Vehiculo";
             this.buttonActualizar.UseVisualStyleBackColor = true;
+            this.buttonActualizar.Click += new System.EventHandler(this.Controlador_Click);
             // 
             // buttonEliminar
             // 
@@ -81,6 +82,7 @@
             this.buttonConsultar.TabIndex = 6;
             this.buttonConsultar.Text = "Consultar Vehiculo";
             this.buttonConsultar.UseVisualStyleBackColor = true;
+            this.buttonConsultar.Click += new System.EventHandler(this.Controlador_Click);
             // 
             // Concesionario
             // 

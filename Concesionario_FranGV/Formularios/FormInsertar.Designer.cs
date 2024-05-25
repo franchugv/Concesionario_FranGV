@@ -28,23 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxMarca = new System.Windows.Forms.TextBox();
             this.labelMarca = new System.Windows.Forms.Label();
             this.labelModelo = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxModelo = new System.Windows.Forms.TextBox();
             this.labelAnio = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxAnio = new System.Windows.Forms.TextBox();
+            this.labelPrecio = new System.Windows.Forms.Label();
             this.labelAviso = new System.Windows.Forms.Label();
+            this.ButtonInsertar = new System.Windows.Forms.Button();
+            this.maskedTextBoxPrecio = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxMarca
             // 
-            this.textBox1.Location = new System.Drawing.Point(112, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(163, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxMarca.Location = new System.Drawing.Point(112, 56);
+            this.textBoxMarca.MaxLength = 15;
+            this.textBoxMarca.Name = "textBoxMarca";
+            this.textBoxMarca.Size = new System.Drawing.Size(163, 20);
+            this.textBoxMarca.TabIndex = 0;
             // 
             // labelMarca
             // 
@@ -64,12 +66,13 @@
             this.labelModelo.TabIndex = 3;
             this.labelModelo.Text = "Modelo:";
             // 
-            // textBox2
+            // textBoxModelo
             // 
-            this.textBox2.Location = new System.Drawing.Point(112, 94);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(163, 20);
-            this.textBox2.TabIndex = 2;
+            this.textBoxModelo.Location = new System.Drawing.Point(112, 94);
+            this.textBoxModelo.MaxLength = 30;
+            this.textBoxModelo.Name = "textBoxModelo";
+            this.textBoxModelo.Size = new System.Drawing.Size(163, 20);
+            this.textBoxModelo.TabIndex = 2;
             // 
             // labelAnio
             // 
@@ -80,28 +83,22 @@
             this.labelAnio.TabIndex = 5;
             this.labelAnio.Text = "Año:";
             // 
-            // textBox3
+            // textBoxAnio
             // 
-            this.textBox3.Location = new System.Drawing.Point(112, 133);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(163, 20);
-            this.textBox3.TabIndex = 4;
+            this.textBoxAnio.Location = new System.Drawing.Point(112, 133);
+            this.textBoxAnio.MaxLength = 4;
+            this.textBoxAnio.Name = "textBoxAnio";
+            this.textBoxAnio.Size = new System.Drawing.Size(163, 20);
+            this.textBoxAnio.TabIndex = 4;
             // 
-            // label4
+            // labelPrecio
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 178);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "label4";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(112, 175);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(163, 20);
-            this.textBox4.TabIndex = 6;
+            this.labelPrecio.AutoSize = true;
+            this.labelPrecio.Location = new System.Drawing.Point(48, 178);
+            this.labelPrecio.Name = "labelPrecio";
+            this.labelPrecio.Size = new System.Drawing.Size(40, 13);
+            this.labelPrecio.TabIndex = 7;
+            this.labelPrecio.Text = "Precio:";
             // 
             // labelAviso
             // 
@@ -112,20 +109,40 @@
             this.labelAviso.TabIndex = 8;
             this.labelAviso.Text = "El precio puede ser nulo";
             // 
+            // ButtonInsertar
+            // 
+            this.ButtonInsertar.Location = new System.Drawing.Point(51, 215);
+            this.ButtonInsertar.Name = "ButtonInsertar";
+            this.ButtonInsertar.Size = new System.Drawing.Size(224, 23);
+            this.ButtonInsertar.TabIndex = 9;
+            this.ButtonInsertar.Text = "Insertar Vehículo";
+            this.ButtonInsertar.UseVisualStyleBackColor = true;
+            this.ButtonInsertar.Click += new System.EventHandler(this.ButtonInsertar_Click);
+            // 
+            // maskedTextBoxPrecio
+            // 
+            this.maskedTextBoxPrecio.Location = new System.Drawing.Point(112, 178);
+            this.maskedTextBoxPrecio.Mask = "000000";
+            this.maskedTextBoxPrecio.Name = "maskedTextBoxPrecio";
+            this.maskedTextBoxPrecio.Size = new System.Drawing.Size(163, 20);
+            this.maskedTextBoxPrecio.TabIndex = 10;
+            this.maskedTextBoxPrecio.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
+            // 
             // FormInsertar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 321);
+            this.Controls.Add(this.maskedTextBoxPrecio);
+            this.Controls.Add(this.ButtonInsertar);
             this.Controls.Add(this.labelAviso);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.labelPrecio);
             this.Controls.Add(this.labelAnio);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxAnio);
             this.Controls.Add(this.labelModelo);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxModelo);
             this.Controls.Add(this.labelMarca);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxMarca);
             this.Name = "FormInsertar";
             this.Text = "FormInsertar";
             this.ResumeLayout(false);
@@ -135,14 +152,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxMarca;
         private System.Windows.Forms.Label labelMarca;
         private System.Windows.Forms.Label labelModelo;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxModelo;
         private System.Windows.Forms.Label labelAnio;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxAnio;
+        private System.Windows.Forms.Label labelPrecio;
         private System.Windows.Forms.Label labelAviso;
+        private System.Windows.Forms.Button ButtonInsertar;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxPrecio;
     }
 }

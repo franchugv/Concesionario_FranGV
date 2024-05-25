@@ -128,12 +128,12 @@ namespace Concesionario_FranGV.Formularios
             string MensajeError = "";
             bool esValido = true; // Inicializado a Verdadero
             List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
-            ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
-            
-            comboBoxListaMarcas.Items.Clear();
 
             try
             {
+                ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
+                comboBoxListaMarcas.Items.Clear();
+
                 // Añadir lista de marcas al iniciar el programa
                 for (int indice = 0; indice < ListaVehiculos.Count; indice++)
                 {
@@ -157,14 +157,14 @@ namespace Concesionario_FranGV.Formularios
             // Recursos
             string MensajeError = "";
             bool esValido = true; // Inicializado a Verdadero
-            int anio = Convert.ToInt32(comboBoxListaAnios.Text);
-            float precio = Convert.ToSingle(maskedTextBoxNuevoPrecio.Text);
              
 
 
 
             try
             {
+                int anio = Convert.ToInt32(comboBoxListaAnios.Text);
+                float precio = Convert.ToSingle(maskedTextBoxNuevoPrecio.Text);
 
 
                 Vehiculo vehiculo = new Vehiculo(comboBoxListaMarcas.Text, comboBoxListaModelos.Text, anio, precio);

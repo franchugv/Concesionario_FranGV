@@ -129,7 +129,7 @@
             // maskedTextBoxNuevoPrecio
             // 
             this.maskedTextBoxNuevoPrecio.Location = new System.Drawing.Point(123, 184);
-            this.maskedTextBoxNuevoPrecio.Mask = "000000";
+            this.maskedTextBoxNuevoPrecio.Mask = "000099";
             this.maskedTextBoxNuevoPrecio.Name = "maskedTextBoxNuevoPrecio";
             this.maskedTextBoxNuevoPrecio.Size = new System.Drawing.Size(92, 20);
             this.maskedTextBoxNuevoPrecio.TabIndex = 27;

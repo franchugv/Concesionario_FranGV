@@ -39,6 +39,7 @@
             this.textBoxPrecio = new System.Windows.Forms.TextBox();
             this.maskedTextBoxNuevoPrecio = new System.Windows.Forms.MaskedTextBox();
             this.labelNuevoPrecio = new System.Windows.Forms.Label();
+            this.labelInfoPrecio = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxListaMarcas
@@ -143,11 +144,21 @@
             this.labelNuevoPrecio.TabIndex = 28;
             this.labelNuevoPrecio.Text = "Nuevo Precio:";
             // 
+            // labelInfoPrecio
+            // 
+            this.labelInfoPrecio.AutoSize = true;
+            this.labelInfoPrecio.Location = new System.Drawing.Point(221, 187);
+            this.labelInfoPrecio.Name = "labelInfoPrecio";
+            this.labelInfoPrecio.Size = new System.Drawing.Size(82, 13);
+            this.labelInfoPrecio.TabIndex = 29;
+            this.labelInfoPrecio.Text = "(5000 - 300000)\r\n";
+            // 
             // FormActualizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 279);
+            this.Controls.Add(this.labelInfoPrecio);
             this.Controls.Add(this.labelNuevoPrecio);
             this.Controls.Add(this.maskedTextBoxNuevoPrecio);
             this.Controls.Add(this.textBoxPrecio);
@@ -180,5 +191,6 @@
         private System.Windows.Forms.TextBox textBoxPrecio;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxNuevoPrecio;
         private System.Windows.Forms.Label labelNuevoPrecio;
+        private System.Windows.Forms.Label labelInfoPrecio;
     }
 }

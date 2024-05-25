@@ -157,13 +157,19 @@ namespace Concesionario_FranGV.Formularios
             // Recursos
             string MensajeError = "";
             bool esValido = true; // Inicializado a Verdadero
+            int anio = Convert.ToInt32(comboBoxListaAnios.Text);
+            float precio = Convert.ToSingle(maskedTextBoxNuevoPrecio.Text);
+             
 
-            // TODO: Usar clase
 
-            string INSTRUCCION = $"UPDATE Vehiculos SET Precio = {maskedTextBoxNuevoPrecio.Text} WHERE Marca = '{comboBoxListaMarcas.Text}' AND Modelo = '{comboBoxListaModelos.Text}' AND Anio = '{comboBoxListaAnios.Text}'";
 
             try
             {
+
+
+                Vehiculo vehiculo = new Vehiculo(comboBoxListaMarcas.Text, comboBoxListaModelos.Text, anio, precio);
+                string INSTRUCCION = $"UPDATE Vehiculos SET Precio = {vehiculo.Precio} WHERE Marca = '{vehiculo.Marca}' AND Modelo = '{vehiculo.Modelo}' AND Anio = '{vehiculo.Anio}'";
+
                 if (UI.VentanaConfirmacion("¿Desea actializar el precio?") == DialogResult.Yes)
                 {             
                 APIBD.EjecutarInstruccion(INSTRUCCION);
@@ -183,7 +189,6 @@ namespace Concesionario_FranGV.Formularios
                 comboBoxListaAnios.Items.Clear();
                 comboBoxListaAnios.Text = "";
 
-                comboBoxListaMarcas.Items.Clear();
                 comboBoxListaMarcas.Text = "";
 
                 comboBoxListaModelos.Items.Clear();

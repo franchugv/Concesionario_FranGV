@@ -38,6 +38,7 @@
             this.labelAviso = new System.Windows.Forms.Label();
             this.ButtonInsertar = new System.Windows.Forms.Button();
             this.maskedTextBoxPrecio = new System.Windows.Forms.MaskedTextBox();
+            this.labelInfoPrecio = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxMarca
@@ -103,7 +104,7 @@
             // labelAviso
             // 
             this.labelAviso.AutoSize = true;
-            this.labelAviso.Location = new System.Drawing.Point(281, 178);
+            this.labelAviso.Location = new System.Drawing.Point(281, 166);
             this.labelAviso.Name = "labelAviso";
             this.labelAviso.Size = new System.Drawing.Size(121, 13);
             this.labelAviso.TabIndex = 8;
@@ -128,11 +129,21 @@
             this.maskedTextBoxPrecio.TabIndex = 10;
             this.maskedTextBoxPrecio.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
             // 
+            // labelInfoPrecio
+            // 
+            this.labelInfoPrecio.AutoSize = true;
+            this.labelInfoPrecio.Location = new System.Drawing.Point(281, 185);
+            this.labelInfoPrecio.Name = "labelInfoPrecio";
+            this.labelInfoPrecio.Size = new System.Drawing.Size(82, 13);
+            this.labelInfoPrecio.TabIndex = 30;
+            this.labelInfoPrecio.Text = "(5000 - 300000)\r\n";
+            // 
             // FormInsertar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 321);
+            this.Controls.Add(this.labelInfoPrecio);
             this.Controls.Add(this.maskedTextBoxPrecio);
             this.Controls.Add(this.ButtonInsertar);
             this.Controls.Add(this.labelAviso);
@@ -162,5 +173,6 @@
         private System.Windows.Forms.Label labelAviso;
         private System.Windows.Forms.Button ButtonInsertar;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxPrecio;
+        private System.Windows.Forms.Label labelInfoPrecio;
     }
 }

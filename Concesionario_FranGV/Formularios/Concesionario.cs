@@ -37,6 +37,7 @@ namespace Concesionario_FranGV
                     ActualizarForm();
                     break;
                 case "buttonEliminar": 
+                    EliminarForm();
                     break;
                 case "buttonConsultar":
                     ConsultarForm();
@@ -67,6 +68,12 @@ namespace Concesionario_FranGV
             FormActualizar FormAct = new FormActualizar();
 
             FormAct.ShowDialog();
+        }
+
+        private void EliminarForm()
+        {
+            FormEliminar formEliminar = new FormEliminar();
+            formEliminar.ShowDialog();
         }
     }
 }

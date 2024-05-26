@@ -66,6 +66,12 @@
     <Compile Include="Formularios\FormConsultar.Designer.cs">
       <DependentUpon>FormConsultar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FormEliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FormEliminar.Designer.cs">
+      <DependentUpon>FormEliminar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FormInsertar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormConsultar.resx">
       <DependentUpon>FormConsultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FormEliminar.resx">
+      <DependentUpon>FormEliminar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FormInsertar.resx">
       <DependentUpon>FormInsertar.cs</DependentUpon>

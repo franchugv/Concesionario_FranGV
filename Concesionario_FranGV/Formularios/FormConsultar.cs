@@ -39,7 +39,7 @@ namespace Concesionario_FranGV.Formularios
                 listaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
 
                 // Agregar información marca seleccionada
-                for (int indice = 0; indice < listaVehiculos.ToArray().Length; indice++)
+                for (int indice = 0; indice < listaVehiculos.Count; indice++)
                 {
                     listBoxListaVehiculos.Items.Add($"Modelo: {listaVehiculos[indice].Modelo}, Año: {listaVehiculos[indice].Anio}, Precio: {listaVehiculos[indice].Precio}");
                 }
@@ -81,7 +81,7 @@ namespace Concesionario_FranGV.Formularios
 
 
                 // Agregar marcas
-                for (int indice = 0; indice < listaVehiculos.ToArray().Length; indice++)
+                for (int indice = 0; indice < listaVehiculos.Count; indice++)
                 {   
 
                     comboBoxListaMarcas.Items.Add(listaVehiculos[indice].Marca);

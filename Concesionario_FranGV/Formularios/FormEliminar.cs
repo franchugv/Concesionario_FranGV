@@ -32,7 +32,7 @@ namespace Concesionario_FranGV.Formularios
                 switch (Opcion.Name)
                 {
                     case "comboBoxListaMarcas":
-                        ListaMarcas();
+                        ListaMarcasYListaVehiculos();
                         break;
                     case "comboBoxListaVehiculos":
                         ListaVehiculos();
@@ -50,7 +50,7 @@ namespace Concesionario_FranGV.Formularios
             }
         }
 
-        private void ListaMarcas()
+        private List<Vehiculo> ListaMarcasYListaVehiculos()
         {
             comboBoxListaVehiculos.Enabled = true;
 
@@ -68,6 +68,8 @@ namespace Concesionario_FranGV.Formularios
             {
                 comboBoxListaVehiculos.Items.Add(ListaVehiculos[indice].Modelo+ ", " + ListaVehiculos[indice].Anio+" ," + ListaVehiculos[indice].Precio);
             }
+
+            return ListaVehiculos;
 
         }
 
@@ -128,11 +130,22 @@ namespace Concesionario_FranGV.Formularios
             // Recursos
             string MensajeError = "";
             bool esValido = true;
-            string INSTRUCCION = $"SELECT * FROM Vehiculos WHERE Marca = '{comboBoxListaMarcas.Text}' AND Modelo = '' AND Anio = '{}'";
+            string INSTRUCCION;
 
             try
             {
+                List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
+                ListaVehiculos = ListaMarcasYListaVehiculos();
 
+
+                
+                INSTRUCCION = $"DELETE FROM Vehiculos WHERE  Marca = '{ListaVehiculos[0].Marca}' AND Modelo = '{ListaVehiculos[0].Modelo}' AND Anio = '{ListaVehiculos[0].Anio}'";
+
+                if(UI.VentanaConfirmacion($"¿Desea Eliminar el véhículo de marca {ListaVehiculos[0].Marca}?") == DialogResult.Yes)
+                {
+                    APIBD.EjecutarInstruccion(INSTRUCCION);
+                    UI.MostrarMensaje("Vehiculo eliminado correctamente");
+                }
 
             }
             catch (Exception error)
@@ -143,6 +156,15 @@ namespace Concesionario_FranGV.Formularios
             finally
             {
                 if (!esValido) UI.MostrarError(MensajeError);
+                else
+                {
+                    // Reseteamos el contenido para que el usuario elija otro vehiculo
+                    comboBoxListaMarcas.Text = "";
+
+                    comboBoxListaVehiculos.Text = "";
+                    comboBoxListaVehiculos.Items.Clear();
+                    buttonEliminar.Enabled = false;
+                }
             }
         }
 

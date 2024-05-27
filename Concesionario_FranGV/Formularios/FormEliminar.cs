@@ -107,12 +107,12 @@ namespace Concesionario_FranGV.Formularios
 
         }
 
+        // Habilita el boton de eliminar
         private void ListaVehiculos()
         {
             buttonEliminar.Enabled = true;
-
-
         }
+
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {

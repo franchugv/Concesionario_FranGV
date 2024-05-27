@@ -17,6 +17,88 @@ namespace Concesionario_FranGV.Formularios
             InitializeComponent();
         }
 
+        private void FormActualizar_Load(object sender, EventArgs e)
+        {
+            // Recursos
+            const string INSTRUCCION = "SELECT * FROM Vehiculos";
+
+            string MensajeError = "";
+            bool esValido = true; // Inicializado a Verdadero
+            List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
+
+            try
+            {
+                ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
+                comboBoxListaMarcas.Items.Clear();
+
+                // Añadir lista de marcas al iniciar el programa
+                for (int indice = 0; indice < ListaVehiculos.Count; indice++)
+                {
+
+                    if (!comboBoxListaMarcas.Items.Contains(ListaVehiculos[indice].Marca))
+                    {
+                        comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
+                    }
+                }
+
+            }
+            catch (Exception Error)
+            {
+                esValido = false;
+                MensajeError = Error.Message;
+            }
+            finally
+            {
+                if (!esValido) UI.MostrarError(MensajeError);
+            }
+        }
+
+        private void buttonActualizar_Click(object sender, EventArgs e)
+        {
+            // Recursos
+            string MensajeError = "";
+            bool esValido = true; // Inicializado a Verdadero
+
+
+
+
+            try
+            {
+                int anio = Convert.ToInt32(comboBoxListaAnios.Text);
+                float precio = Convert.ToSingle(textBoxPrecioNuevo.Text);
+
+
+                Vehiculo vehiculo = new Vehiculo(comboBoxListaMarcas.Text, comboBoxListaModelos.Text, anio, precio);
+                string INSTRUCCION = $"UPDATE Vehiculos SET Precio = {vehiculo.Precio} WHERE Marca = '{vehiculo.Marca}' AND Modelo = '{vehiculo.Modelo}' AND Anio = '{vehiculo.Anio}'";
+
+                if (UI.VentanaConfirmacion("¿Desea actializar el precio?") == DialogResult.Yes)
+                {
+                    APIBD.EjecutarInstruccion(INSTRUCCION);
+                    UI.MostrarMensaje($"El vehículo de marca {comboBoxListaMarcas.Text} ha sido actualizado correctamente");
+                }
+            }
+            catch (Exception Error)
+            {
+                esValido = false;
+                MensajeError = Error.Message;
+            }
+            finally
+            {
+                if (!esValido) UI.MostrarError(MensajeError);
+
+                textBoxPrecio.Text = "";
+                comboBoxListaAnios.Items.Clear();
+                comboBoxListaAnios.Text = "";
+
+                comboBoxListaMarcas.Text = "";
+
+                comboBoxListaModelos.Items.Clear();
+                comboBoxListaModelos.Text = "";
+
+                textBoxPrecioNuevo.Text = "";
+            }
+        }
+
         private void Controlador_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Recursos
@@ -58,7 +140,7 @@ namespace Concesionario_FranGV.Formularios
         }
 
 
-
+        #region Funcionalidades Selected index
         private void CBMarcas()
         {
 
@@ -122,92 +204,13 @@ namespace Concesionario_FranGV.Formularios
 
 
         }
+        #region
 
 
 
 
 
 
-        private void FormActualizar_Load(object sender, EventArgs e)
-        {
-            // Recursos
-            const string INSTRUCCION = "SELECT * FROM Vehiculos";
 
-            string MensajeError = "";
-            bool esValido = true; // Inicializado a Verdadero
-            List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
-
-            try
-            {
-                ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
-                comboBoxListaMarcas.Items.Clear();
-
-                // Añadir lista de marcas al iniciar el programa
-                for (int indice = 0; indice < ListaVehiculos.Count; indice++)
-                {
-
-                    if (!comboBoxListaMarcas.Items.Contains(ListaVehiculos[indice].Marca))
-                    {
-                        comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
-                    }
-                }
-
-            }
-            catch (Exception Error)
-            {
-                esValido = false;
-                MensajeError = Error.Message;
-            }
-            finally
-            {
-                if (!esValido) UI.MostrarError(MensajeError);
-            }
-        }
-
-        private void buttonActualizar_Click(object sender, EventArgs e)
-        {
-            // Recursos
-            string MensajeError = "";
-            bool esValido = true; // Inicializado a Verdadero
-             
-
-
-
-            try
-            {
-                int anio = Convert.ToInt32(comboBoxListaAnios.Text);
-                float precio = Convert.ToSingle(textBoxPrecioNuevo.Text);
-
-
-                Vehiculo vehiculo = new Vehiculo(comboBoxListaMarcas.Text, comboBoxListaModelos.Text, anio, precio);
-                string INSTRUCCION = $"UPDATE Vehiculos SET Precio = {vehiculo.Precio} WHERE Marca = '{vehiculo.Marca}' AND Modelo = '{vehiculo.Modelo}' AND Anio = '{vehiculo.Anio}'";
-
-                if (UI.VentanaConfirmacion("¿Desea actializar el precio?") == DialogResult.Yes)
-                {             
-                APIBD.EjecutarInstruccion(INSTRUCCION);
-                UI.MostrarMensaje($"El vehículo de marca {comboBoxListaMarcas.Text} ha sido actualizado correctamente");
-                }
-            }
-            catch (Exception Error)
-            {
-                esValido = false;
-                MensajeError = Error.Message;
-            }
-            finally
-            {
-                if (!esValido) UI.MostrarError(MensajeError);
-
-                textBoxPrecio.Text = "";
-                comboBoxListaAnios.Items.Clear();
-                comboBoxListaAnios.Text = "";
-
-                comboBoxListaMarcas.Text = "";
-
-                comboBoxListaModelos.Items.Clear();
-                comboBoxListaModelos.Text = "";
-
-                textBoxPrecioNuevo.Text = "";
-            }
-        }
     }
 }

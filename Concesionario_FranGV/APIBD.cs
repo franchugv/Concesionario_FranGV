@@ -99,7 +99,7 @@ namespace Concesionario_FranGV
                     anio = Convert.ToInt32(fila["Anio"]);
                     precio = Convert.ToSingle(fila["Precio"]);
 
-                    ListaVehiculos[indice] = new Vehiculo((string)fila["Marca"], (string)fila["Modelo"], anio, precio);
+                ListaVehiculos[indice] = new Vehiculo((string)fila["Marca"], (string)fila["Modelo"], anio, precio);
                 
 
 

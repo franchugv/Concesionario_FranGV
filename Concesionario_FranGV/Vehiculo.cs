@@ -9,8 +9,9 @@ namespace Concesionario_FranGV
     public class Vehiculo
     {
 
-
+        #region Constantes
         // CONSTANTES
+        private const float PRECIO_DEF = 0;
         // Longitudes
         // Marca
         private const int LongitudMinimaMarca = 2;
@@ -21,28 +22,24 @@ namespace Concesionario_FranGV
         // Año
         private const int AnioMinimo = 2000;
         private const int AnioMaximo = 2024;
-
-        // Precioo
+        // Precio
         private const int PrecioMinimo = 5000;
         private const int PrecioMaximo = 300000;
-
         // MIEMBROS
         private string _marca;
         private string _modelo;
         private int _anio;
         private float _precio;
+        #endregion
 
         // CONSTRUCTORES
-
-
-
         // Claves primarias
         public Vehiculo(string brand, string model, int year)
         {
             Marca = brand;
             Modelo = model;
             Anio = year;
-            _precio = 0;
+            _precio = PRECIO_DEF;
         }
 
         // Todos
@@ -52,7 +49,6 @@ namespace Concesionario_FranGV
         }
 
         // PROPIEDADES
-
         public string Marca
         {
             get 
@@ -94,7 +90,6 @@ namespace Concesionario_FranGV
             }
         }
 
-        // Al ser float podrá contener decimles
         public float Precio
         {
             get { return _precio; }
@@ -121,7 +116,7 @@ namespace Concesionario_FranGV
         /// Validar marca
         /// </summary>
         /// <param name="brand">Marca</param>
-        /// <returns>Devuelve la marca en Mayusculas</returns>
+        /// <returns>Devuelve la marca en Mayúsculas</returns>
         /// <exception cref="Exception"></exception>
         private static string ValidarMarca(string brand)
         {
@@ -136,9 +131,9 @@ namespace Concesionario_FranGV
 
             foreach (char caracter in brand)
             {
-                if (char.IsDigit(caracter)) throw new Exception("Los digitos no están permitidos");
+                if (char.IsDigit(caracter)) throw new Exception("Los dígitos no están permitidos");
             }
-            // Devolver a mayusculas
+            // Devolver a mayúsculas
             return brand;
         }
         /// <summary>
@@ -149,7 +144,7 @@ namespace Concesionario_FranGV
         /// <exception cref="Exception"></exception>
         private static string ValidarModelo(string model)
         {
-            // Pasar a mayusculas, siempre al principio
+            // Pasar a mayúsculas, siempre al principio
             model = model.Trim().ToUpper();
 
             // Min
@@ -157,17 +152,26 @@ namespace Concesionario_FranGV
             // Max
             if (model.Length > LongitudMaxinaModelo) throw new Exception("El rango del modelo es mayor al valores establecido");
 
-            // Parsar a mayusculas
-        return model;            
+            // Pasar a mayúsculas
+            return model;            
         }
 
-
+        /// <summary>
+        /// Valida el máximo y el mínimo del año
+        /// </summary>
+        /// <param name="anio"></param>
+        /// <exception cref="Exception"></exception>
         private static void ValidarAnio(int anio)
         {
             if (anio < AnioMinimo) throw new Exception("El año es inferior al mínimo");
             if (anio > AnioMaximo) throw new Exception("El año es superior al actual");
         }
 
+        /// <summary>
+        /// Valida el máximo y el mínimo del precio
+        /// </summary>
+        /// <param name="precio">Precio a evaluar</param>
+        /// <exception cref="Exception"></exception>
         private static void ValidarPrecio(float precio)
         {
             if (precio < PrecioMinimo && precio != 0) throw new Exception("El precio es inferior al mínimo");

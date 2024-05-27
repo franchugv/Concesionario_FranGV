@@ -17,29 +17,36 @@ namespace Concesionario_FranGV.Formularios
             InitializeComponent();
         }
 
+        private void CargarMarcas()
+        {
+            comboBoxListaMarcas.Text = "";
+            comboBoxListaMarcas.Items.Clear();
+
+            // Recursos
+            const string INSTRUCCION = "SELECT * FROM Vehiculos";
+
+            // Inicializar Vehiculo
+            List<Vehiculo> ListaVlehiculos = new List<Vehiculo>();
+            ListaVlehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
+
+            // Cargar ComboBox
+            for (int indice = 0; indice < ListaVlehiculos.Count; indice++)
+            {
+                if (!comboBoxListaMarcas.Items.Contains(ListaVlehiculos[indice].Marca))
+                    comboBoxListaMarcas.Items.Add(ListaVlehiculos[indice].Marca);
+            }
+        }
+
+            
         private void FormEliminar_Load(object sender, EventArgs e)
         {
             // Recursos
             string MensajeError = "";
             bool esValido = true;
-            const string INSTRUCCION = "SELECT * FROM Vehiculos";
 
             try
             {
-                comboBoxListaMarcas.Items.Clear();
-                // Inicializar Vehiculo
-                List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
-                ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
-
-                // Cargar ComboBox
-                for (int indice = 0; indice < ListaVehiculos.Count; indice++)
-                {
-                    if (!comboBoxListaMarcas.Items.Contains(ListaVehiculos[indice].Marca))
-                        comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
-                }
-
-
-
+                CargarMarcas();
             }
             catch (Exception error)
             {
@@ -83,7 +90,7 @@ namespace Concesionario_FranGV.Formularios
             }
         }
 
-        // Funcioonalidades SELECTED INDEX CHANGED
+        // Funcionalidades SELECTED INDEX CHANGED
         private void ListaMarcas()
         {
 
@@ -146,10 +153,10 @@ namespace Concesionario_FranGV.Formularios
                 INSTRUCCION = $"DELETE FROM Vehiculos WHERE  Marca = '{vehiculo.Marca}' AND Modelo = '{vehiculo.Modelo}' AND Anio = '{vehiculo.Anio}'";
 
                 // Validar eliminación
-                if(UI.VentanaConfirmacion($"¿Desea Eliminar el véhículo de marca {vehiculo.Marca}?") == DialogResult.Yes)
+                if(UI.VentanaConfirmacion($"¿Desea Eliminar el vehículo de marca {vehiculo.Marca}?") == DialogResult.Yes)
                 {
                     APIBD.EjecutarInstruccion(INSTRUCCION);
-                    UI.MostrarMensaje("Vehiculo eliminado correctamente");
+                    UI.MostrarMensaje("Vehículo eliminado correctamente");
                 }
 
             }
@@ -170,6 +177,9 @@ namespace Concesionario_FranGV.Formularios
                     comboBoxListaVehiculos.Items.Clear();
                     buttonEliminar.Enabled = false;
                 }
+
+                // Resetear marcas
+                CargarMarcas();
             }
         }
 

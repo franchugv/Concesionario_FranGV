@@ -77,7 +77,7 @@ namespace Concesionario_FranGV
             DataRow fila = null;
 
             // Asignamos el dataset
-            // No hacemos conexion porque ya lo hicimos en este método
+            // No hacemos conexión porque ya lo hicimos en este método
             datosVehiculos = ObtenerVehiculos(instruccion);
 
             // Obtener num filas tabla vehículos
@@ -110,7 +110,7 @@ namespace Concesionario_FranGV
         }
 
         // 1. Necesitamos un SqlConnection igualado con el método
-        // 2. Necsesitamos el SqlCommand instanciado con la conexión y la instrucción
+        // 2. Necesitamos el SqlCommand instanciado con la conexión y la instrucción
         // Insert, Update, Delete
         public static void EjecutarInstruccion(string Instruccion)
         {
@@ -126,7 +126,7 @@ namespace Concesionario_FranGV
                 // Abrir conexión
                 conexion.Open();
 
-                // Ejecución de la instricción
+                // Ejecución de la instrucción
                 comando.ExecuteNonQuery();
 
             }

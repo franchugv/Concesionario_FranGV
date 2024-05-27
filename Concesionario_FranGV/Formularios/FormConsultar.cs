@@ -56,38 +56,44 @@ namespace Concesionario_FranGV.Formularios
             }
         }
 
+        private void CargarMarcas()
+        {
+            listBoxListaVehiculos.Items.Clear();
+            comboBoxListaMarcas.Items.Clear();
+
+            // Recursos
+            const string INSTRUCCION = "SELECT * FROM Vehiculos";
+
+
+            // Inicializar clase vehiculos
+            List<Vehiculo> listaVehiculos = new List<Vehiculo>();
+
+            // Cargamos la lista de vehiculos
+            listaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
+
+
+            // Agregar marcas
+            for (int indice = 0; indice < listaVehiculos.Count; indice++)
+            {
+                if (!comboBoxListaMarcas.Items.Contains(listaVehiculos[indice].Marca))
+                {
+                    comboBoxListaMarcas.Items.Add(listaVehiculos[indice].Marca);
+                }
+            }
+        }
+
         private void FormConsultar_Load(object sender, EventArgs e)
         {
             // Recursos
             bool esValido = true;
             string MensajeError = "";
-            listBoxListaVehiculos.Items.Clear();
-            comboBoxListaMarcas.Items.Clear();
 
 
             try
             {
 
 
-                // Recursos
-                const string INSTRUCCION = "SELECT * FROM Vehiculos";
-
-
-                // Inicializar clase vehiculos
-                List<Vehiculo> listaVehiculos = new List<Vehiculo>();
-
-                // Cargamos la lista de vehiculos
-                listaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
-
-
-                // Agregar marcas
-                for (int indice = 0; indice < listaVehiculos.Count; indice++)
-                {
-                    if (!comboBoxListaMarcas.Items.Contains(listaVehiculos[indice].Marca))
-                    {  
-                    comboBoxListaMarcas.Items.Add(listaVehiculos[indice].Marca);
-                    }
-                }
+                CargarMarcas();
                 
            
 

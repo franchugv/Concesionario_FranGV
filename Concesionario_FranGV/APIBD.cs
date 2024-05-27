@@ -56,6 +56,7 @@ namespace Concesionario_FranGV
             // Cargamos el contendio de la tabla con FILL
             Puente.Fill(datos, "Vehiculos");
 
+            // NO OLVIDAR CERRAR LA CONEXIÓN ----------------
             conexionBaseDatos.Close();
 
             return datos;
@@ -136,6 +137,7 @@ namespace Concesionario_FranGV
             }
             finally
             {
+                // NO OLVIDAR CERRAR LA CONEXIÓN ----------------
                 conexion.Close();
             }
 

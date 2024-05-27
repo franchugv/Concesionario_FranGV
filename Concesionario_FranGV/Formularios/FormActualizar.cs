@@ -20,7 +20,7 @@ namespace Concesionario_FranGV.Formularios
         private void CargarMarcas()
         {
             // Recursos
-            string instruccion = $"SELECT * FROM Vehiculo";
+            string instruccion = $"SELECT * FROM Vehiculos";
 
             List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
             ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(instruccion));

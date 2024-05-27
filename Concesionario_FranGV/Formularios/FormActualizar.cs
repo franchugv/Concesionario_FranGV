@@ -137,7 +137,11 @@ namespace Concesionario_FranGV.Formularios
                 // Añadir lista de marcas al iniciar el programa
                 for (int indice = 0; indice < ListaVehiculos.Count; indice++)
                 {
-                    comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
+
+                    if (!comboBoxListaMarcas.Items.Contains(ListaVehiculos[indice].Marca))
+                    {
+                        comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
+                    }
                 }
 
             }

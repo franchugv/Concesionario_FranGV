@@ -32,7 +32,7 @@ namespace Concesionario_FranGV.Formularios
                 switch (Opcion.Name)
                 {
                     case "comboBoxListaMarcas":
-                        ListaMarcasYListaVehiculos();
+                        ListaMarcas();
                         break;
                     case "comboBoxListaVehiculos":
                         ListaVehiculos();
@@ -50,7 +50,7 @@ namespace Concesionario_FranGV.Formularios
             }
         }
 
-        private List<Vehiculo> ListaMarcasYListaVehiculos()
+        private void ListaMarcas()
         {
             comboBoxListaVehiculos.Enabled = true;
 
@@ -68,8 +68,8 @@ namespace Concesionario_FranGV.Formularios
             {
                 comboBoxListaVehiculos.Items.Add(ListaVehiculos[indice].Modelo+ ", " + ListaVehiculos[indice].Anio+" ," + ListaVehiculos[indice].Precio);
             }
-
-            return ListaVehiculos;
+            
+            
 
         }
 
@@ -77,7 +77,7 @@ namespace Concesionario_FranGV.Formularios
         {
             buttonEliminar.Enabled = true;
 
-
+            
         }
 
 
@@ -103,6 +103,7 @@ namespace Concesionario_FranGV.Formularios
                 // Cargar ComboBox
                 for (int indice = 0; indice < ListaVehiculos.Count; indice++)
                 {
+                    if (!comboBoxListaMarcas.Items.Contains(ListaVehiculos[indice].Marca))
                     comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
                 }
 
@@ -122,10 +123,7 @@ namespace Concesionario_FranGV.Formularios
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            // Obtener año
-            string Anio = comboBoxListaVehiculos.Text;
-            Anio = Anio.Substring(Anio.IndexOf(" ,") + 1);
-            Anio = Anio.Substring(0, Anio.IndexOf(" ,") + 1);
+
 
             // Recursos
             string MensajeError = "";
@@ -134,14 +132,13 @@ namespace Concesionario_FranGV.Formularios
 
             try
             {
-                List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
-                ListaVehiculos = ListaMarcasYListaVehiculos();
+                Vehiculo vehiculo = new Vehiculo("a", "b", 2004, 222220);
 
 
                 
-                INSTRUCCION = $"DELETE FROM Vehiculos WHERE  Marca = '{ListaVehiculos[0].Marca}' AND Modelo = '{ListaVehiculos[0].Modelo}' AND Anio = '{ListaVehiculos[0].Anio}'";
+                INSTRUCCION = $"DELETE FROM Vehiculos WHERE  Marca = '{vehiculo.Marca}' AND Modelo = '{vehiculo.Modelo}' AND Anio = '{vehiculo.Anio}'";
 
-                if(UI.VentanaConfirmacion($"¿Desea Eliminar el véhículo de marca {ListaVehiculos[0].Marca}?") == DialogResult.Yes)
+                if(UI.VentanaConfirmacion($"¿Desea Eliminar el véhículo de marca {vehiculo.Marca}?") == DialogResult.Yes)
                 {
                     APIBD.EjecutarInstruccion(INSTRUCCION);
                     UI.MostrarMensaje("Vehiculo eliminado correctamente");

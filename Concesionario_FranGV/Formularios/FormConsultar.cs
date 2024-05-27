@@ -82,10 +82,11 @@ namespace Concesionario_FranGV.Formularios
 
                 // Agregar marcas
                 for (int indice = 0; indice < listaVehiculos.Count; indice++)
-                {   
-
+                {
+                    if (!comboBoxListaMarcas.Items.Contains(listaVehiculos[indice].Marca))
+                    {  
                     comboBoxListaMarcas.Items.Add(listaVehiculos[indice].Marca);
-
+                    }
                 }
                 
            

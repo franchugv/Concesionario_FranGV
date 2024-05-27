@@ -17,7 +17,40 @@ namespace Concesionario_FranGV.Formularios
             InitializeComponent();
         }
 
-    
+        private void FormEliminar_Load(object sender, EventArgs e)
+        {
+            // Recursos
+            string MensajeError = "";
+            bool esValido = true;
+            const string INSTRUCCION = "SELECT * FROM Vehiculos";
+
+            try
+            {
+                comboBoxListaMarcas.Items.Clear();
+                // Inicializar Vehiculo
+                List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
+                ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
+
+                // Cargar ComboBox
+                for (int indice = 0; indice < ListaVehiculos.Count; indice++)
+                {
+                    if (!comboBoxListaMarcas.Items.Contains(ListaVehiculos[indice].Marca))
+                        comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
+                }
+
+
+
+            }
+            catch (Exception error)
+            {
+                esValido = false;
+                MensajeError = error.Message;
+            }
+            finally
+            {
+                if (!esValido) UI.MostrarError(MensajeError);
+            }
+        }
 
         private void Controlador_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -50,8 +83,10 @@ namespace Concesionario_FranGV.Formularios
             }
         }
 
+        // Funcioonalidades SELECTED INDEX CHANGED
         private void ListaMarcas()
         {
+
             comboBoxListaVehiculos.Enabled = true;
 
             string INSTRUCCION = $"SELECT * FROM Vehiculos WHERE Marca = '{comboBoxListaMarcas.Text}'";
@@ -60,16 +95,15 @@ namespace Concesionario_FranGV.Formularios
             comboBoxListaVehiculos.Items.Clear();
 
             // Cargamos la clase
-            List<Vehiculo>ListaVehiculos = new List<Vehiculo>();
+            List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
             ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
 
             // Cargar ComboBox Vehiculos
-            for(int indice = 0; indice < ListaVehiculos.Count; indice++)
+            for (int indice = 0; indice < ListaVehiculos.Count; indice++)
             {
-                comboBoxListaVehiculos.Items.Add(ListaVehiculos[indice].Modelo+ ", " + ListaVehiculos[indice].Anio+" ," + ListaVehiculos[indice].Precio);
+                comboBoxListaVehiculos.Items.Add(ListaVehiculos[indice].Modelo + "," + ListaVehiculos[indice].Anio + "," + ListaVehiculos[indice].Precio);
             }
-            
-            
+
 
         }
 
@@ -77,48 +111,7 @@ namespace Concesionario_FranGV.Formularios
         {
             buttonEliminar.Enabled = true;
 
-            
-        }
 
-
-
-
-
-
-
-        private void FormEliminar_Load(object sender, EventArgs e)
-        {
-            // Recursos
-            string MensajeError = "";
-            bool esValido = true;
-            const string INSTRUCCION = "SELECT * FROM Vehiculos";
-
-            try
-            {
-                comboBoxListaMarcas.Items.Clear();
-                // Inicializar Vehiculo
-                List<Vehiculo> ListaVehiculos = new List<Vehiculo>();
-                ListaVehiculos.AddRange(APIBD.ObtenerListaVehiculos(INSTRUCCION));
-
-                // Cargar ComboBox
-                for (int indice = 0; indice < ListaVehiculos.Count; indice++)
-                {
-                    if (!comboBoxListaMarcas.Items.Contains(ListaVehiculos[indice].Marca))
-                    comboBoxListaMarcas.Items.Add(ListaVehiculos[indice].Marca);
-                }
-
-
-
-            }
-            catch (Exception error)
-            {
-                esValido = false;
-                MensajeError = error.Message;
-            }
-            finally
-            {
-                if (!esValido) UI.MostrarError(MensajeError);
-            }
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -132,12 +125,27 @@ namespace Concesionario_FranGV.Formularios
 
             try
             {
-                Vehiculo vehiculo = new Vehiculo("a", "b", 2004, 222220);
+                string aux;
+
+                // Modelo, ejemplo A8500
+                string modelo = comboBoxListaVehiculos.Text.Split(',')[0];
+
+                // ANIO, ejemplo 2001
+                aux = comboBoxListaVehiculos.Text.Split(',')[1];
+                int anio = Convert.ToInt32(aux);
+                
+                // PRECIO, ejemplo 5000
+                aux = comboBoxListaVehiculos.Text.Split(',')[2];
+                float precio = Convert.ToSingle(aux);
+
+
+                Vehiculo vehiculo = new Vehiculo(comboBoxListaMarcas.Text, modelo, anio, precio);
 
 
                 
                 INSTRUCCION = $"DELETE FROM Vehiculos WHERE  Marca = '{vehiculo.Marca}' AND Modelo = '{vehiculo.Modelo}' AND Anio = '{vehiculo.Anio}'";
 
+                // Validar eliminación
                 if(UI.VentanaConfirmacion($"¿Desea Eliminar el véhículo de marca {vehiculo.Marca}?") == DialogResult.Yes)
                 {
                     APIBD.EjecutarInstruccion(INSTRUCCION);
@@ -164,6 +172,9 @@ namespace Concesionario_FranGV.Formularios
                 }
             }
         }
+
+
+
 
     }
 }

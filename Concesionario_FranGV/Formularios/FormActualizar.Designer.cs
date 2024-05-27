@@ -37,9 +37,9 @@
             this.labelModelo = new System.Windows.Forms.Label();
             this.labelPrecio = new System.Windows.Forms.Label();
             this.textBoxPrecio = new System.Windows.Forms.TextBox();
-            this.maskedTextBoxNuevoPrecio = new System.Windows.Forms.MaskedTextBox();
             this.labelNuevoPrecio = new System.Windows.Forms.Label();
             this.labelInfoPrecio = new System.Windows.Forms.Label();
+            this.textBoxPrecioNuevo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxListaMarcas
@@ -126,15 +126,6 @@
             this.textBoxPrecio.Size = new System.Drawing.Size(92, 20);
             this.textBoxPrecio.TabIndex = 26;
             // 
-            // maskedTextBoxNuevoPrecio
-            // 
-            this.maskedTextBoxNuevoPrecio.Location = new System.Drawing.Point(123, 184);
-            this.maskedTextBoxNuevoPrecio.Mask = "000099";
-            this.maskedTextBoxNuevoPrecio.Name = "maskedTextBoxNuevoPrecio";
-            this.maskedTextBoxNuevoPrecio.Size = new System.Drawing.Size(92, 20);
-            this.maskedTextBoxNuevoPrecio.TabIndex = 27;
-            this.maskedTextBoxNuevoPrecio.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
-            // 
             // labelNuevoPrecio
             // 
             this.labelNuevoPrecio.AutoSize = true;
@@ -153,14 +144,21 @@
             this.labelInfoPrecio.TabIndex = 29;
             this.labelInfoPrecio.Text = "(5000 - 300000)\r\n";
             // 
+            // textBoxPrecioNuevo
+            // 
+            this.textBoxPrecioNuevo.Location = new System.Drawing.Point(123, 184);
+            this.textBoxPrecioNuevo.Name = "textBoxPrecioNuevo";
+            this.textBoxPrecioNuevo.Size = new System.Drawing.Size(92, 20);
+            this.textBoxPrecioNuevo.TabIndex = 30;
+            // 
             // FormActualizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 279);
+            this.Controls.Add(this.textBoxPrecioNuevo);
             this.Controls.Add(this.labelInfoPrecio);
             this.Controls.Add(this.labelNuevoPrecio);
-            this.Controls.Add(this.maskedTextBoxNuevoPrecio);
             this.Controls.Add(this.textBoxPrecio);
             this.Controls.Add(this.labelPrecio);
             this.Controls.Add(this.comboBoxListaModelos);
@@ -189,8 +187,8 @@
         private System.Windows.Forms.Label labelModelo;
         private System.Windows.Forms.Label labelPrecio;
         private System.Windows.Forms.TextBox textBoxPrecio;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxNuevoPrecio;
         private System.Windows.Forms.Label labelNuevoPrecio;
         private System.Windows.Forms.Label labelInfoPrecio;
+        private System.Windows.Forms.TextBox textBoxPrecioNuevo;
     }
 }

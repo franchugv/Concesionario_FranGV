@@ -37,8 +37,8 @@
             this.labelPrecio = new System.Windows.Forms.Label();
             this.labelAviso = new System.Windows.Forms.Label();
             this.ButtonInsertar = new System.Windows.Forms.Button();
-            this.maskedTextBoxPrecio = new System.Windows.Forms.MaskedTextBox();
             this.labelInfoPrecio = new System.Windows.Forms.Label();
+            this.textBoxPrecio = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxMarca
@@ -120,15 +120,6 @@
             this.ButtonInsertar.UseVisualStyleBackColor = true;
             this.ButtonInsertar.Click += new System.EventHandler(this.ButtonInsertar_Click);
             // 
-            // maskedTextBoxPrecio
-            // 
-            this.maskedTextBoxPrecio.Location = new System.Drawing.Point(112, 178);
-            this.maskedTextBoxPrecio.Mask = "000099";
-            this.maskedTextBoxPrecio.Name = "maskedTextBoxPrecio";
-            this.maskedTextBoxPrecio.Size = new System.Drawing.Size(163, 20);
-            this.maskedTextBoxPrecio.TabIndex = 10;
-            this.maskedTextBoxPrecio.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
-            // 
             // labelInfoPrecio
             // 
             this.labelInfoPrecio.AutoSize = true;
@@ -138,13 +129,21 @@
             this.labelInfoPrecio.TabIndex = 30;
             this.labelInfoPrecio.Text = "(5000 - 300000)\r\n";
             // 
+            // textBoxPrecio
+            // 
+            this.textBoxPrecio.Location = new System.Drawing.Point(112, 178);
+            this.textBoxPrecio.MaxLength = 6;
+            this.textBoxPrecio.Name = "textBoxPrecio";
+            this.textBoxPrecio.Size = new System.Drawing.Size(163, 20);
+            this.textBoxPrecio.TabIndex = 31;
+            // 
             // FormInsertar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 321);
+            this.Controls.Add(this.textBoxPrecio);
             this.Controls.Add(this.labelInfoPrecio);
-            this.Controls.Add(this.maskedTextBoxPrecio);
             this.Controls.Add(this.ButtonInsertar);
             this.Controls.Add(this.labelAviso);
             this.Controls.Add(this.labelPrecio);
@@ -172,7 +171,7 @@
         private System.Windows.Forms.Label labelPrecio;
         private System.Windows.Forms.Label labelAviso;
         private System.Windows.Forms.Button ButtonInsertar;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxPrecio;
         private System.Windows.Forms.Label labelInfoPrecio;
+        private System.Windows.Forms.TextBox textBoxPrecio;
     }
 }

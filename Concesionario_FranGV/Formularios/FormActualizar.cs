@@ -61,6 +61,8 @@ namespace Concesionario_FranGV.Formularios
 
         private void CBMarcas()
         {
+
+
             // Recursos
             string INSTRUCCION = $"SELECT * FROM Vehiculos WHERE Marca = '{comboBoxListaMarcas.Text}'";
 
@@ -77,6 +79,12 @@ namespace Concesionario_FranGV.Formularios
             {
                 comboBoxListaModelos.Items.Add(ListaVehiculos[indice].Modelo);
             }
+
+            // Limpirar OBJETOS al seleccionar  de nuevo --------------
+            textBoxPrecio.Text = "";
+            comboBoxListaAnios.Text = "";
+            comboBoxListaMarcas.Text = "";
+            comboBoxListaModelos.Text = "";
         }
 
         private void CBModelos()
@@ -168,7 +176,7 @@ namespace Concesionario_FranGV.Formularios
             try
             {
                 int anio = Convert.ToInt32(comboBoxListaAnios.Text);
-                float precio = Convert.ToSingle(maskedTextBoxNuevoPrecio.Text);
+                float precio = Convert.ToSingle(textBoxPrecioNuevo.Text);
 
 
                 Vehiculo vehiculo = new Vehiculo(comboBoxListaMarcas.Text, comboBoxListaModelos.Text, anio, precio);
@@ -177,7 +185,7 @@ namespace Concesionario_FranGV.Formularios
                 if (UI.VentanaConfirmacion("¿Desea actializar el precio?") == DialogResult.Yes)
                 {             
                 APIBD.EjecutarInstruccion(INSTRUCCION);
-                UI.MostrarMensaje($"El vehículo de marca {comboBoxListaMarcas.Text} a sido actualizado correctamente");
+                UI.MostrarMensaje($"El vehículo de marca {comboBoxListaMarcas.Text} ha sido actualizado correctamente");
                 }
             }
             catch (Exception Error)
@@ -198,7 +206,7 @@ namespace Concesionario_FranGV.Formularios
                 comboBoxListaModelos.Items.Clear();
                 comboBoxListaModelos.Text = "";
 
-                maskedTextBoxNuevoPrecio.Text = "";
+                textBoxPrecioNuevo.Text = "";
             }
         }
     }

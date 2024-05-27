@@ -22,13 +22,32 @@ namespace Concesionario_FranGV
             // Recursos
             bool esValido = true;
             string mensajeError = "";
+            string INSTRUCCION = "";
 
             try
             {
-                // Instanciar clase
-                Vehiculo coche = new Vehiculo(textBoxMarca.Text, textBoxModelo.Text, Conversiones.ConvertirInt(textBoxAnio.Text), Conversiones.ConvertirFloat(maskedTextBoxPrecio.Text));
-                // Crear instricción
-                string INSTRUCCION = $"INSERT INTO Vehiculos VALUES ('{coche.Marca}', '{coche.Modelo}', {coche.Anio}, {coche.Precio})";
+
+                if (!string.IsNullOrEmpty(textBoxPrecio.Text))
+                {
+                    // Instanciar clase
+                    Vehiculo coche = new Vehiculo(textBoxMarca.Text, textBoxModelo.Text, Conversiones.ConvertirInt(textBoxAnio.Text), Conversiones.ConvertirFloat(textBoxPrecio.Text));
+                    // Crear instricción
+
+
+                    INSTRUCCION = $"INSERT INTO Vehiculos VALUES ('{coche.Marca}', '{coche.Modelo}', '{coche.Anio}', '{coche.Precio}')";
+
+                }
+                else
+                {
+                    // Instanciar clase
+                    Vehiculo coche = new Vehiculo(textBoxMarca.Text, textBoxModelo.Text, Conversiones.ConvertirInt(textBoxAnio.Text));
+                    // Crear instricción
+
+
+                    INSTRUCCION = $"INSERT INTO Vehiculos VALUES ('{coche.Marca}', '{coche.Modelo}', '{coche.Anio}', '{coche.Precio}')";
+
+
+                }
 
 
 
@@ -44,7 +63,7 @@ namespace Concesionario_FranGV
             finally
             {
                 if(!esValido) UI.MostrarError(mensajeError);
-                else UI.MostrarMensaje($"El vehículo a sido añadido correctamente");
+                else UI.MostrarMensaje($"El vehículo ha sido añadido correctamente");
             }
 
             this.Close();

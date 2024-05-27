@@ -35,12 +35,14 @@ namespace Concesionario_FranGV
         // CONSTRUCTORES
 
 
+
         // Claves primarias
         public Vehiculo(string brand, string model, int year)
         {
             Marca = brand;
             Modelo = model;
             Anio = year;
+            _precio = 0;
         }
 
         // Todos
@@ -168,7 +170,7 @@ namespace Concesionario_FranGV
 
         private static void ValidarPrecio(float precio)
         {
-            if (precio < PrecioMinimo) throw new Exception("El precio es inferior al mínimo");
+            if (precio < PrecioMinimo && precio != 0) throw new Exception("El precio es inferior al mínimo");
             if (precio > PrecioMaximo) throw new Exception("El precio es mayor al máximo");
         }
 

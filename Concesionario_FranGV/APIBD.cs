@@ -95,14 +95,14 @@ namespace Concesionario_FranGV
                 float precio;
 
                 fila = datosVehiculos.Tables["Vehiculos"].Rows[indice];
+                 
+                    anio = Convert.ToInt32(fila["Anio"]);
+                    precio = Convert.ToSingle(fila["Precio"]);
 
-                aux = (string)fila["Anio"];
-                anio = Convert.ToInt32(aux);
-
-                aux = (string)fila["Precio"];
-                precio = Convert.ToSingle(aux);
+                    ListaVehiculos[indice] = new Vehiculo((string)fila["Marca"], (string)fila["Modelo"], anio, precio);
                 
-                ListaVehiculos[indice] = new Vehiculo((string)fila["Marca"], (string)fila["Modelo"], anio, precio);
+
+
             }
             return ListaVehiculos;
 

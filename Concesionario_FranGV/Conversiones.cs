@@ -23,7 +23,7 @@ namespace Concesionario_FranGV
             // Recursos
             float numero = 0;
 
-            numero = Convert.ToInt32(cadena);
+            numero = Convert.ToSingle(cadena);
 
             return numero;
         }

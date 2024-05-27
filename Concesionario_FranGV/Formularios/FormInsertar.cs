@@ -26,7 +26,7 @@ namespace Concesionario_FranGV
 
             try
             {
-
+                // Si el precio es nulo, usaremos otro con
                 if (!string.IsNullOrEmpty(textBoxPrecio.Text))
                 {
                     // Instanciar clase
